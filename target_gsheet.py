@@ -190,7 +190,7 @@ def persist_lines(service, spreadsheet, lines, batch_size):
             schemas[msg.stream] = msg.schema
             key_properties[msg.stream] = msg.key_properties
         else:
-            raise Exception("Unrecognized message {}".format(msg))
+            logger.warning("Unrecognized message {}".format(msg))
 
     if batch:
         write_batch(service, spreadsheet['spreadsheetId'], headers_by_stream[batch[0].stream], batch)
